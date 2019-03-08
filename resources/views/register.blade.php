@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-6 mb-3 form-group">
                                 <label for="fullname">Full Name</label>
-                                <input type="text" name="fullname" class="form-control" placeholder="Abolarin Olanrewaju" equired>
+                                <input type="text" name="fullname" class="form-control" placeholder="Surname Firstname" equired>
                             </div>
                             <div class="col-xs-12 col-md-6 mb-3 form-group">
                                 <label for="email">Email Address</label>
