@@ -1,0 +1,120 @@
+.header-background {
+  background-size: cover;
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: 700px) {
+  .header-background {
+    height: auto;
+  }
+}
+
+.hero-container {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+}
+
+.custom-control-label {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.7rem;
+}
+
+label:not(.custom-control-label),
+form span {
+  opacity: 0.8 !important;
+  color: black;
+  font-weight: 600;
+}
+
+form .btn {
+  background: #00f2cb;
+  padding: 16px 40px;
+  border-radius: 0;
+  margin-right: 20px;
+  color: rgba(43, 43, 43, 0.7);
+  font-weight: 600;
+}
+
+.notification {
+  position: fixed;
+  top: 5;
+  opacity: 1;
+  z-index: 100;
+  padding: 1.2em;
+  box-shadow: 0 0 0 0 inset rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  -webkit-animation: slideIn 0.3s ease-out;
+          animation: slideIn 0.3s ease-out;
+}
+
+.notification.alert-info {
+  background: #dbe0ec;
+  border: 1px solid #96b4fa !important;
+}
+
+.notification.alert-success {
+  background: #d6f8d2;
+  border: 1px solid #66c356 !important;
+}
+
+.notification.alert-danger {
+  background: #f1e3de;
+  border: 1px solid #f36464 !important;
+}
+
+.hero-content {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
