@@ -7,6 +7,7 @@ use App\Attendee;
 use App\Jobs\NotifyNewAttendee;
 use Illuminate\Database\QueryException;
 use App\GatewayInterface;
+use App\Events\NewRegistration;
 
 class Registration extends Controller
 {
@@ -41,8 +42,7 @@ class Registration extends Controller
             return $this->respond(self::DUPLICATE_ATTENDEE_MESSAGE);
         }
 
-        //will raise an event instead
-        //NotifyNewAttendee::dispatch($attendee);
+        event(new NewRegistration($this->attendee));
     }
 
     public function notify()
