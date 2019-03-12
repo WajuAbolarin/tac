@@ -3,14 +3,14 @@
 namespace App\Listeners;
 
 use App\Events\NewRegistration;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Attendee;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SuccessfulRegistration;
 
 class SendEmail implements ShouldQueue
 {
+
     public $attendee;
     /**
      * Create the event listener.

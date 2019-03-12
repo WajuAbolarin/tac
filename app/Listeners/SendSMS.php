@@ -3,11 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\NewRegistration;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Estores;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendSMS
+class SendSMS implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -28,6 +27,6 @@ class SendSMS
     public function handle(NewRegistration $event)
     {
         $e = new Estores($event->attendee);
-        $e->sendMessage();
+        return $e->sendMessage();
     }
 }

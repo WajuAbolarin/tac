@@ -44,8 +44,6 @@ class Registration extends Controller
             return $this->respond(self::NEW_ATTENDEE_MESSAGE);
         } catch (QueryException $e) {
 
-            event(new NewRegistration($this->attendee));
-
             return $this->respond(self::DUPLICATE_ATTENDEE_MESSAGE);
         }
     }
