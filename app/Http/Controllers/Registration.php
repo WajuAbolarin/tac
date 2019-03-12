@@ -23,6 +23,7 @@ class Registration extends Controller
 
     public function store(Request $request, GatewayInterface $paystack)
     {
+
         $request->validate([
             'fullname' => 'bail|required|string',
             'email' => 'email',
@@ -37,20 +38,17 @@ class Registration extends Controller
 
         try {
             $this->attendee = Attendee::newFromRequest($request->except(['_token']));
+
+            event(new NewRegistration($this->attendee));
+
             return $this->respond(self::NEW_ATTENDEE_MESSAGE);
         } catch (QueryException $e) {
+
+            event(new NewRegistration($this->attendee));
+
             return $this->respond(self::DUPLICATE_ATTENDEE_MESSAGE);
         }
-
-        event(new NewRegistration($this->attendee));
     }
-
-    public function notify()
-    {
-        NotifyNewAttendee::dispatch(factory(Attendee::class)->create(['phone' => '09028020900']));
-        dd('done');
-    }
-
 
     private function checkPayment(GatewayInterface $paystack)
     {

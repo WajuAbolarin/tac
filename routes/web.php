@@ -2,6 +2,8 @@
 
 use App\Events\NewRegistration;
 use App\Attendee;
+use App\Mail\SuccessfulRegistration;
+use App\Estores;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,11 @@ use App\Attendee;
 
 
 Route::view('/',  'welcome');
+// Route::get('/', function () {
+//     $attendee = Attendee::first();
+//     // dd($attendee->toArray());
+//     // event(new NewRegistration($attendee));
+// });
 Route::view('/register',  'register');
 Route::post('/register', 'Registration@store');
 Route::get('/assembly-data', 'AssemblyData');
-// Route::get('/job', 'Registration@notify');

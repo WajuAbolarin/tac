@@ -79,11 +79,11 @@
                             <div class="col-xs-12 col-md-6 mb-3 form-group d-flex justify-content-between align-items-baseline px-2" style="padding-top:38px;">
                                 <span class="form-text">Gender</span>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input name="gender" type="radio" id="customRadioInline1" class="custom-control-input">
+                                    <input name="gender" type="radio" id="customRadioInline1" class="custom-control-input" value="male">
                                     <label class="custom-control-label" for="customRadioInline1">Male</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input name="gender" type="radio" id="customRadioInline2" class="custom-control-input">
+                                    <input name="gender" type="radio" id="customRadioInline2" class="custom-control-input" value="female">
                                     <label class="custom-control-label" for="customRadioInline2">Female</label>
                                 </div>
                             </div>
@@ -110,16 +110,16 @@
                         </div>
 
                         <div class="row mt-4">
-                            <div class="col-xs-12 col-md-6 mb-3">
-                                <button class="btn btn-block" role="button" id="payBtn">Pay Registration Dues</button>
-                                <img src="{{asset('/images/secured_by_paystack.png')}}" class="mt-3 d-block mx-auto" width="320px">
+                            <div class="col-xs-12 col-md-6 ml-md-auto mb-md-5">
+                                <button class="btn btn-block" role="button" id="payBtn">PAY DUES & SUBMIT</button>
+                                <img src="{{asset('/images/secured_by_paystack.png')}}" class="mt-3 d-block mx-auto w-100" width="320px">
                             </div>
-                            <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <!-- <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
                                 <button class="btn btn-block" id="submitBtn">
                                     <span class="loading"></span>
                                     Submit
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>

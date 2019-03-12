@@ -44,5 +44,9 @@ return [
         'key'       => env('PAYSTACK_SECRET'),
         'public'    => env('PAYSTACK_PUBLIC')
     ],
+    'estores' => [
+        'username' => env('ESTORES_USERNAME'),
+        'password' => env('ESTORES_PASSWORD'),
+    ]
 
 ];

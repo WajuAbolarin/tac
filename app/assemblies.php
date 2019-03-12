@@ -105,7 +105,8 @@ return [
         'Orozo District' => [
             'Orozo',
             'Maraba Loko',
-            'Karshi'
+            'Karshi',
+            'Testimony'
         ],
 
         'Mararaba 2 District' => [
@@ -149,6 +150,7 @@ return [
 
     'Gwagwalada' => [
         'Gwagwalada District' => [
+            'Gwagwalada',
             'Tunga Maje',
             'Victory',
             'Tsohon Kutunku',

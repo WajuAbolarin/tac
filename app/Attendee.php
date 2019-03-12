@@ -63,4 +63,9 @@ class Attendee extends Model
     {
         return !is_null($this->paid_at);
     }
+
+    public function getRegNoAttribute()
+    {
+        return sprintf('CV19-%05d', $this->id);
+    }
 }

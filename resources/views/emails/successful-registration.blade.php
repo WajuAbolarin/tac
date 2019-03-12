@@ -7,6 +7,8 @@
 
 Registration Dues: **{{ $isPaid ? 'PAID' : 'UNPAID' }}**
 
+Registration Number: **{{ $reg_no }}**
+
 @component('mail::button', ['url' => 'https://tacnabujametro.org'])
 Visit Site
 @endcomponent

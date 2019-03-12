@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\NewRegistration;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Estores;
 
 class SendSMS
 {
@@ -26,6 +27,7 @@ class SendSMS
      */
     public function handle(NewRegistration $event)
     {
-        // echo 'sending sms';
+        $e = new Estores($event->attendee);
+        $e->sendMessage();
     }
 }

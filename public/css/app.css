@@ -33,6 +33,22 @@
   font-size: 0.7rem;
 }
 
+input::-webkit-input-placeholder {
+  opacity: 0.3 !important;
+}
+
+input:-ms-input-placeholder {
+  opacity: 0.3 !important;
+}
+
+input::-ms-input-placeholder {
+  opacity: 0.3 !important;
+}
+
+input::placeholder {
+  opacity: 0.3 !important;
+}
+
 label:not(.custom-control-label),
 form span {
   opacity: 0.8 !important;

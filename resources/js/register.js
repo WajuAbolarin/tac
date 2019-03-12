@@ -1,8 +1,9 @@
 import axios from 'axios'
 
+const key = process.env.MIX_PAYSTACK_PUBLIC
 let notification = document.querySelector('#notification')
-let submitBtn = document.querySelector('#submitBtn')
 const registerForm = document.forms['register-form']
+const payBtn = document.querySelector('#payBtn')
 let paid = false
 
 const sumbitForm = ref => {
@@ -19,10 +20,12 @@ const sumbitForm = ref => {
             }
         })
         .then(({ data: { message, level } }) => {
+            registerForm.reset()
+
             notify({
                 message,
                 level,
-                timeout: 4000
+                timeout: 5000
             })
         })
 }
@@ -34,7 +37,7 @@ function callback(response) {
     return handleSuccessfulPayment(response)
 }
 
-const notify = ({ message, level = 'info', timeout = 2000 }) => {
+const notify = ({ message, level = 'info', timeout = 5000 }) => {
     notification.innerHTML = ''
     notification.classList.remove(`alert-${level}`)
 
@@ -50,13 +53,11 @@ const notify = ({ message, level = 'info', timeout = 2000 }) => {
 }
 
 const handleSuccessfulPayment = response => {
-    paid = true
     notify({
-        message: 'You have successfuly paid for your registrations,<strong> we are almost done </strong> saving your details',
-        level: 'success',
-        timeout: 2000
+        message: `Processing ... this may take a minute`,
+        level: 'info'
     })
-
+    paid = true
     sumbitForm(response.trxref)
 }
 
@@ -69,8 +70,6 @@ const handlefailedPayment = response => {
         level: 'danger',
         timeout: 3000
     })
-    submitBtn.classList.remove('disabled')
-    submitBtn.removeAttribute('disabled')
 }
 
 const formIsInvalid = () => {
@@ -93,17 +92,16 @@ function payWithPaystack() {
     fullname = form.elements.fullname.value
     phone = form.elements.phone.value
 
-    submitBtn.classList.add('disabled')
-    submitBtn.setAttribute('disabled', true)
-
     const onClose = () => {
-        notify({ message: 'we noticed you cancelled payments, for any enquires please call <strong> 09028020900 </strong>', level: 'info', timeout: 4000 })
-        submitBtn.classList.remove('disabled')
-        submitBtn.removeAttribute('disabled')
+        notify({
+            message: 'we noticed you cancelled payments, for any enquires please call <strong> 09028020900 </strong>',
+            level: 'info',
+            timeout: 4000
+        })
     }
 
     let handler = PaystackPop.setup({
-        key: 'pk_test_b021c3d2eb776aecae070ff04d9d7af7e2cea1bb',
+        key: key,
         email,
         amount: 150000,
         currency: 'NGN',
@@ -135,7 +133,6 @@ registerForm.addEventListener('submit', e => {
 
     if (formIsInvalid()) {
         notify({ message: 'Please supply all your details before submiting', level: 'info' })
-
         return
     }
     sumbitForm(null)
@@ -160,3 +157,9 @@ $('#assemblyInput').select2({
         }
     }
 })
+
+// let submitBtn = document.querySelector('#submitBtn')
+// submitBtn.classList.add('disabled')
+// submitBtn.setAttribute('disabled', true)
+// submitBtn.classList.remove('disabled')
+// submitBtn.removeAttribute('disabled')

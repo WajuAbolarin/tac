@@ -1907,9 +1907,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
+var key = "pk_test_b021c3d2eb776aecae070ff04d9d7af7e2cea1bb";
 var notification = document.querySelector('#notification');
-var submitBtn = document.querySelector('#submitBtn');
 var registerForm = document.forms['register-form'];
+var payBtn = document.querySelector('#payBtn');
 var paid = false;
 
 var sumbitForm = function sumbitForm(ref) {
@@ -1927,10 +1928,11 @@ var sumbitForm = function sumbitForm(ref) {
     var _ref$data = _ref.data,
         message = _ref$data.message,
         level = _ref$data.level;
+    registerForm.reset();
     notify({
       message: message,
       level: level,
-      timeout: 4000
+      timeout: 5000
     });
   });
 };
@@ -1948,7 +1950,7 @@ var notify = function notify(_ref2) {
       _ref2$level = _ref2.level,
       level = _ref2$level === void 0 ? 'info' : _ref2$level,
       _ref2$timeout = _ref2.timeout,
-      timeout = _ref2$timeout === void 0 ? 2000 : _ref2$timeout;
+      timeout = _ref2$timeout === void 0 ? 5000 : _ref2$timeout;
   notification.innerHTML = '';
   notification.classList.remove("alert-".concat(level));
   notification.classList.add("alert-".concat(level));
@@ -1962,12 +1964,11 @@ var notify = function notify(_ref2) {
 };
 
 var handleSuccessfulPayment = function handleSuccessfulPayment(response) {
-  paid = true;
   notify({
-    message: 'You have successfuly paid for your registrations,<strong> we are almost done </strong> saving your details',
-    level: 'success',
-    timeout: 2000
+    message: "Processing ... this may take a minute",
+    level: 'info'
   });
+  paid = true;
   sumbitForm(response.trxref);
 };
 
@@ -1977,8 +1978,6 @@ var handlefailedPayment = function handlefailedPayment(response) {
     level: 'danger',
     timeout: 3000
   });
-  submitBtn.classList.remove('disabled');
-  submitBtn.removeAttribute('disabled');
 };
 
 var formIsInvalid = function formIsInvalid() {
@@ -2006,8 +2005,6 @@ function payWithPaystack() {
   email = form.elements.email.value;
   fullname = form.elements.fullname.value;
   phone = form.elements.phone.value;
-  submitBtn.classList.add('disabled');
-  submitBtn.setAttribute('disabled', true);
 
   var onClose = function onClose() {
     notify({
@@ -2015,12 +2012,10 @@ function payWithPaystack() {
       level: 'info',
       timeout: 4000
     });
-    submitBtn.classList.remove('disabled');
-    submitBtn.removeAttribute('disabled');
   };
 
   var handler = PaystackPop.setup({
-    key: 'pk_test_b021c3d2eb776aecae070ff04d9d7af7e2cea1bb',
+    key: key,
     email: email,
     amount: 150000,
     currency: 'NGN',
@@ -2072,7 +2067,11 @@ $('#assemblyInput').select2({
       };
     }
   }
-});
+}); // let submitBtn = document.querySelector('#submitBtn')
+// submitBtn.classList.add('disabled')
+// submitBtn.setAttribute('disabled', true)
+// submitBtn.classList.remove('disabled')
+// submitBtn.removeAttribute('disabled')
 
 /***/ }),
 

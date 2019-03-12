@@ -15,6 +15,7 @@ class SuccessfulRegistration extends Mailable
     const NEW_ATTENDEE_MESSAGE = 'Congratulations **%s** you have successfuly registered for the Conference, see you there!';
 
     public $message;
+    public $reg_no;
     public $isPaid;
     /**
      * Create a new message instance.
@@ -24,6 +25,7 @@ class SuccessfulRegistration extends Mailable
     public function __construct(Attendee $attendee)
     {
         $this->isPaid = $attendee->hasPaid;
+        $this->reg_no = $attendee->reg_no;
         $this->message = sprintf(self::NEW_ATTENDEE_MESSAGE, $attendee->fullname);
     }
 
