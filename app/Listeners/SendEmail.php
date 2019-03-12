@@ -7,9 +7,12 @@ use App\Attendee;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SuccessfulRegistration;
+use Illuminate\Queue\InteractsWithQueue;
 
 class SendEmail implements ShouldQueue
 {
+
+    use InteractsWithQueue;
 
     public $attendee;
     /**

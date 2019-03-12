@@ -18,11 +18,12 @@ use App\Estores;
 
 
 Route::view('/',  'welcome');
-// Route::get('/', function () {
-//     $attendee = Attendee::first();
-//     // dd($attendee->toArray());
-//     // event(new NewRegistration($attendee));
-// });
+Route::get('/', function () {
+    $attendee = Attendee::first();
+    // dd($attendee->toArray());
+    event(new NewRegistration($attendee));
+    return view('welcome');
+});
 Route::view('/register',  'register');
 Route::post('/register', 'Registration@store');
 Route::get('/assembly-data', 'AssemblyData');

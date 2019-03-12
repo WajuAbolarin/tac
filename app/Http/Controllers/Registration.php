@@ -12,11 +12,8 @@ use App\Events\NewRegistration;
 class Registration extends Controller
 {
     protected $attendee;
-    protected $request;
 
-    protected $payment_message = '<strong> Registration Fee Unpaid </strong>';
-
-    const NEW_ATTENDEE_MESSAGE = 'Congratulations <strong>%s</strong>you have successfuly registered for the Conference, see you there!';
+    const NEW_ATTENDEE_MESSAGE = 'Congratulations <strong>%s</strong>you have successfuly registered for the Conference, see you there! <strong> Registration No: %s </strong>';
 
     const DUPLICATE_ATTENDEE_MESSAGE = '<strong>%s</strong>, It seems you are already registered  with us!';
 
@@ -58,17 +55,18 @@ class Registration extends Controller
         $check =  $paystack->verify(['reference' => request()->transaction_ref]);
 
         if (strtolower($check->data->status) !== 'success') {
-            return;
+            return response()->json([
+                'message' => 'We were unable to verify your payment at this time please contact us with this reference numer ' . request()->transaction_ref,
+                'level' => 'danger'
+            ]);
         }
-
-        $this->payment_message = '<strong> Registration Fee Paid </strong>';
     }
 
     public function responseData($message)
     {
         return [
             'message' =>
-            sprintf($message . $this->payment_message, request()->fullname),
+            sprintf($message, request()->fullname, $this->attendee->reg_no),
             'level' => 'success'
         ];
     }
