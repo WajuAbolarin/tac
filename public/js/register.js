@@ -2082,7 +2082,7 @@ $('#assemblyInput').select2({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/waju/Projects/tacnabujametro/resources/js/register.js */"./resources/js/register.js");
+module.exports = __webpack_require__(/*! /home/waju/Projects/tac/resources/js/register.js */"./resources/js/register.js");
 
 
 /***/ })

@@ -4,9 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>@yield('title')</title>
+    <title><?php echo $__env->yieldContent('title'); ?></title>
     <meta name="description" content="Register for The Apostolic Church Abuja Metropolis, Nyanya Area, Gwagwalada Area, Suleja Area Annual Easter Youth Convocation, God First themed The Unique Youth">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
@@ -24,8 +24,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="{{mix('css/app.css')}}">
-    @stack('header-scripts')
+    <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+    <?php echo $__env->yieldPushContent('header-scripts'); ?>
 </head>
 
 <body>
@@ -51,14 +51,13 @@
 
                             <ul>
                                 <li><a href="/">HOME</a></li>
-                                {{--
-                            <li><a href="#">SUNFEST 2018</a></li> --}}
+                                
                                 <li><a href="/register">REGISTER</a></li>
-                                {{-- <li><a href="#">MINISTERS</a></li> --}}
-                                {{-- <li><a href="#">BLOG</a></li> --}}
-                                {{-- <li><a href="#">TESTIMONIES</a></li> --}}
-                                {{-- <li><a href="#">WATCH LIVE</a></li> --}}
-                                {{-- <li><a href="#"><i class="fas fa-microphone"></i></a></li> --}}
+                                
+                                
+                                
+                                
+                                
                             </ul>
                             <!-- flex -->
                         </nav>

@@ -68,4 +68,8 @@ class Attendee extends Model
     {
         return sprintf('CV19-%05d', $this->id);
     }
+    public function payments()
+    {
+        return  $this->hasMany(Payment::class, 'attendee_id');
+    }
 }

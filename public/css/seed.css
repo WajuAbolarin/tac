@@ -1,0 +1,28 @@
+.site-header {
+  position: initial;
+  background: rgba(0, 0, 0, 0.9);
+  height: 80px;
+  padding: 20px 0;
+}
+
+.main-content {
+  background: linear-gradient(180deg, #fff 20%, #f0f0f0 60%);
+  /* W3C */
+}
+
+textarea.form-control {
+  position: relative;
+}
+
+.form-group {
+  position: relative;
+}
+
+.count {
+  position: absolute;
+  right: 7%;
+  font-style: italic;
+  bottom: 5%;
+  font-size: 0.8em;
+}
+
