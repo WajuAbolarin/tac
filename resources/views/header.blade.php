@@ -57,7 +57,7 @@
                                 {{-- <li><a href="#">MINISTERS</a></li> --}}
                                 {{-- <li><a href="#">BLOG</a></li> --}}
                                 {{-- <li><a href="#">TESTIMONIES</a></li> --}}
-                                {{-- <li><a href="#">WATCH LIVE</a></li> --}}
+                                 <li><a href="/seed">SEED FUND</a></li> 
                                 {{-- <li><a href="#"><i class="fas fa-microphone"></i></a></li> --}}
                             </ul>
                             <!-- flex -->
