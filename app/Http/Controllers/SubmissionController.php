@@ -10,7 +10,7 @@ class SubmissionController extends Controller
     public function store(Request $request)
     {
         $rules = array_map(function ($item) {
-            return  'required|string|size:' . Submission::Questions[$item - 1]['chars'];
+            return  'required|string|max:' . Submission::Questions[$item - 1]['chars'];
         }, range(1, 15));
 
         $request->validate($rules);
