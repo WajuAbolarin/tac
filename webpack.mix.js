@@ -14,8 +14,10 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/register.js", "public/js")
     .js("resources/js/submission.js", "public/js")
+    .js("resources/js/admin.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/seed.scss", "public/css")
+    .sass("resources/sass/admin.scss", "public/css")
     .extract(["vue", "jquery", "bootstrap"]);
 
 if (mix.inProduction()) {

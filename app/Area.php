@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     public $guarded = [];
+    public $hidden = ['created_at', 'updated_at'];
+
 
     public function districts()
     {
@@ -15,6 +17,13 @@ class Area extends Model
 
     public function assemblies()
     {
-        return $this->hasManyThrough(Assembly::class, District::class, 'district_id', 'area_id');
+        return $this->hasManyThrough(Assembly::class, District::class);
+    }
+
+    public function attendies()
+    {
+        return $this->assemblies->map(function ($assembly) {
+            return $assembly->attendies;
+        })->flatten();
     }
 }

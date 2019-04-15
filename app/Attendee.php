@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
 
 class Attendee extends Model
 {
@@ -53,6 +54,10 @@ class Attendee extends Model
         );
     }
 
+    public function assembly()
+    {
+        return $this->belongsTo(Assembly::class, 'assembly_id', 'id');
+    }
 
     public function setPaid()
     {
@@ -71,5 +76,44 @@ class Attendee extends Model
     public function payments()
     {
         return  $this->hasMany(Payment::class, 'attendee_id');
+    }
+    public function toArray()
+    {
+        return [
+            'reg_no' => $this->reg_no,
+            'fullname' => $this->fullname,
+            'assembly' => $this->assembly->name,
+            'district' => $this->assembly->district->name,
+            'area' => $this->assembly->district->area->name,
+            'age' => $this->age,
+            'payment' => $this->has_paid,
+            'id' => $this->id
+        ];
+    }
+    public static function getData(Request $request)
+    {
+        //poor implementation ahead
+        $filter = $request->only('area', 'assembly', 'district');
+        $per_page = $request->per_page ?: 15;
+
+        if (empty($filter)) {
+
+            return  response()->json(static::paginate($per_page));
+        }
+
+
+        $location = array_keys($request->except('page', 'per_page'))[0];
+        switch ($location) {
+            case 'area':
+                return response()->json(['data' => (Area::find($filter['area']))->attendies()]);
+                break;
+            case 'district':
+                return response()->json(['data' => (District::find($filter['district']))->attendies]);
+                break;
+
+            case 'assembly':
+                return response()->json(['data' => (Assembly::find($filter['assembly']))->attendies]);
+                break;
+        }
     }
 }

@@ -8,7 +8,7 @@ $factory->define(App\Attendee::class, function (Faker $faker) {
         'email' => $faker->safeEmail(),
         'phone'  => $faker->phoneNumber(),
         'address'  => $faker->address(),
-        'assembly'  => $faker->city(),
+        'assembly_id'  => $faker->randomElement(range(1, 31)),
         'gender'  => $faker->randomElement(['male', 'female']),
         'age'  => $faker->randomElement(['12-20yrs', '21-30yrs', '31-40yrs']),
         'role_id' => 1,

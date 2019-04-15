@@ -8,6 +8,8 @@ use App\Jobs\NotifyNewAttendee;
 use Illuminate\Database\QueryException;
 use App\GatewayInterface;
 use App\Events\NewRegistration;
+use App\Assembly;
+use Illuminate\Support\Facades\DB;
 
 class Registration extends Controller
 {
@@ -17,6 +19,11 @@ class Registration extends Controller
 
     const DUPLICATE_ATTENDEE_MESSAGE = '<strong>%s</strong>, It seems you are already registered  with us!';
 
+
+    public function index(Request $request)
+    {
+        return Attendee::getData($request);
+    }
 
     public function store(Request $request, GatewayInterface $paystack)
     {

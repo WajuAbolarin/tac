@@ -20,11 +20,14 @@ use App\Estores;
 Route::view('/',  'welcome');
 Route::view('/register',  'register');
 Route::view('/seed',  'submission');
+Route::view('/tac-admin',  'admin');
 Route::post('/seed', 'SubmissionController@store');
 Route::post('/register', 'Registration@store');
 Route::get('/register-attendee', 'AttendeeRegistrationpA@store');
 Route::get('/assembly-data', 'AssemblyData');
 
-// Auth::routes();
+Route::get('/attendee-data', 'Registration@index');
+Route::get('/branches-data', 'BranchController');
 
+// Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

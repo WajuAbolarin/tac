@@ -132,8 +132,8 @@
 <!-- main-content -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('footer-scripts'); ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
+<script src="/js/select2.min.js"></script>
 <script src="<?php echo e(mix('js/register.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
 

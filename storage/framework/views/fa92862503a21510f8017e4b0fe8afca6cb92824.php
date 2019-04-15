@@ -56,7 +56,7 @@
                                 
                                 
                                 
-                                
+                                 <li><a href="/seed">SEED FUND</a></li> 
                                 
                             </ul>
                             <!-- flex -->
