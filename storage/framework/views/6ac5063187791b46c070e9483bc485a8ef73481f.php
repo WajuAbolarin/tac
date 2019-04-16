@@ -54,6 +54,6 @@
 </div>
     <script src="<?php echo e(mix('js/manifest.js')); ?>"></script>
     <script src="<?php echo e(mix('js/vendor.js')); ?>"></script>
-    <script src="<?php echo e(mix('js/app.js')); ?>"></script>
+    <script src="<?php echo e(mix('js/admin.js')); ?>"></script>
  </body>
 </html>
