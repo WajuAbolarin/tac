@@ -115,12 +115,12 @@
                                 <img src="{{asset('/images/secured_by_paystack.png')}}" class="mt-3 d-block mx-auto w-100" width="320px">
                             </div>
 
-                            <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            {{-- <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
                                 <button class="btn btn-block" id="submitBtn">
                                     <span class="loading"></span>
                                     Submit
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
                     </form>
                 </div>
